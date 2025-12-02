@@ -95,15 +95,9 @@ def recomendar_vinho_v2(pais, sabor, tanino_input, preco_input, comida_input):
     return [rec[0] for rec in recomendacoes]
 
 def buscar_noticias(termo):
-    PALAVRAS_CHAVE = ['vinho', 'wine', 'enologia', 'sommelier', 'uva', 'tinto', 'branco', 'seco', 'suave', 'vinícola', 'adega', 'cabernet', 'merlot', 'malbec']
     try:
-        results = DDGS().text(f"{termo} vinho", region='br-pt', max_results=15)
-        resultados_filtrados = []
-        for r in results:
-            texto_completo = (r['title'] + " " + r['body']).lower()
-            if any(chave in texto_completo for chave in PALAVRAS_CHAVE):
-                resultados_filtrados.append(r)
-        return resultados_filtrados[:5]
+        results = DDGS().text(f"{termo} vinho", region='br-pt', max_results=5)
+        return results
     except Exception as e:
         return []
 
