@@ -96,7 +96,7 @@ def recomendar_vinho_v2(pais, sabor, tanino_input, preco_input, comida_input):
 
 def buscar_noticias(termo):
     try:
-        results = DDGS().text(f"{termo} vinho", region='br-pt', max_results=5)
+        results = DDGS().text(f"{termo} vinho", region='br-pt', max_results=6)
         return results
     except Exception as e:
         return []
