@@ -16,7 +16,9 @@ st.markdown("""
     .stMetric { background-color: #f9f9f9; padding: 10px; border-radius: 10px; border-left: 5px solid #722F37; }
     .css-1button { width: 100%; }
     h1 { color: #722F37; font-family: 'Helvetica Neue', sans-serif; }
+    h3 { color: #722F37; }
     [data-testid="stSidebar"] { background-color: #f7f7f7; }
+    a { text-decoration: none; color: #722F37; font-weight: bold; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -93,9 +95,15 @@ def recomendar_vinho_v2(pais, sabor, tanino_input, preco_input, comida_input):
     return [rec[0] for rec in recomendacoes]
 
 def buscar_noticias(termo):
+    PALAVRAS_CHAVE = ['vinho', 'wine', 'enologia', 'sommelier', 'uva', 'tinto', 'branco', 'seco', 'suave', 'vinícola', 'adega', 'cabernet', 'merlot', 'malbec']
     try:
-        results = DDGS().text(f"Vinhos destaque {termo} 2024 2025 review", region='br-pt', max_results=4)
-        return results
+        results = DDGS().text(f"{termo} vinho", region='br-pt', max_results=15)
+        resultados_filtrados = []
+        for r in results:
+            texto_completo = (r['title'] + " " + r['body']).lower()
+            if any(chave in texto_completo for chave in PALAVRAS_CHAVE):
+                resultados_filtrados.append(r)
+        return resultados_filtrados[:5]
     except Exception as e:
         return []
 
@@ -167,23 +175,31 @@ with tab1:
         st.warning("Nenhum vinho exato encontrado. Tente 'Não importa' no preço.")
 
 with tab2:
-    st.header("🌐 Radar de Tendências")
-    st.write("Monitoramento em tempo real do mercado de vinhos.")
+    st.header("🌐 Radar de Tendências Enológicas")
+    st.write("Acompanhe o que está acontecendo no mundo dos vinhos em tempo real.")
     
-    termo_tendencia = st.text_input("Sobre o que você quer saber?", "Melhores vinhos brasileiros 2025")
+    termo_tendencia = st.text_input("Digite um assunto:", placeholder="Ex: Melhores tintos 2024, História do Malbec, Premiações...")
     
-    if st.button("📡 Escanear Web"):
-        with st.spinner('Pesquisando na internet...'):
-            noticias = buscar_noticias(termo_tendencia)
+    if st.button("📡 Pesquisar Agora"):
+        if termo_tendencia:
+            st.info(f"🔍 Buscando tendências sobre: **'{termo_tendencia}'**...")
             
-            if noticias:
-                st.success("Encontramos estas tendências recentes:")
-                for news in noticias:
-                    with st.expander(f"📰 {news['title']}"):
-                        st.write(news['body'])
-                        st.link_button("Ler Artigo Completo", news['href'])
-            else:
-                st.warning("Não conseguimos conectar com a base de busca no momento. Tente novamente.")
+            with st.spinner('Decantando as informações da rede...'):
+                noticias = buscar_noticias(termo_tendencia)
+                
+                if noticias:
+                    st.markdown("### 📰 Últimas Notícias")
+                    st.markdown("---")
+                    for news in noticias:
+                        st.markdown(f"### 🍷 {news['title']}")
+                        st.caption(f"Fonte: Google News | Relevância: Alta")
+                        st.markdown(f"_{news['body']}_")
+                        st.link_button("Ler Artigo Completo ➜", news['href'])
+                        st.markdown("---")
+                else:
+                    st.warning("Não encontramos resultados exatos. Tente termos mais simples.")
+        else:
+            st.error("Por favor, digite algum assunto antes de clicar.")
 
 with tab3:
     st.header("Laboratório Químico")
