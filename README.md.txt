@@ -2,7 +2,7 @@ Alquimia do Vinho – Sistema Inteligente de Análise e Recomendação Enológic
 
 Summelier Digital com Machine Learning Projeto de Extensão em Sistemas Inteligentes — UNINOVE
 
-Integrante: Turma: Unidade Santo Amaro Disciplina: RA: 2224107994
+Integrante: Leandro Silva da Luz Oliveira. Turma: 41. Unidade Santo Amaro Disciplina: Ciência da Computação. RA: 2224107994
 
 
 Links de Acesso:
@@ -52,5 +52,6 @@ Coleta e Tratamento de Dados (ETL): Limpeza do dataset winequality-red.csv.
 Treinamento de Modelo: Separação de arquivos de treino (train.py) e aplicação (app.py), garantindo boas práticas de arquitetura.
 
 Persistência de Objetos: Uso de joblib para salvar o modelo treinado (.pkl) e o escalonador (scaler), permitindo que a IA funcione em produção.
+
 
 Integração Web: Desenvolvimento de interface gráfica para tornar a IA acessível ao usuário final.
