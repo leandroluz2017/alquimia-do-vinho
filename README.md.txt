@@ -1,15 +1,28 @@
 Alquimia do Vinho – Sistema Inteligente de Análise e Recomendação Enológica.
 
-Summelier Digital com Machine Learning Projeto de Extensão em Sistemas Inteligentes — UNINOVE
-
 Integrante: Leandro Silva da Luz Oliveira. Turma: 41. Unidade Santo Amaro Disciplina: Ciência da Computação. RA: 2224107994
 
+O Alquimia do Vinho é uma aplicação Full Stack que une a tradição da enologia com a precisão da Inteligência Artificial.
 
 Links de Acesso:
 
 Repositório (Código Fonte): https://github.com/leandroluz2017/alquimia-do-vinho
 
-Apresentação (Vídeo): [COLE O LINK DO YOUTUBE AQUI]
+Vídeo de Apresentação
+
+O vídeo demonstrará:
+
+Estrutura do projeto
+
+Explicação do modelo
+
+Como treinar e rodar
+
+Demonstração no Streamlit
+
+Explicação dos gráficos
+
+Resultados e conclusão
 
 Aplicação Online (Deploy): https://alquimia-do-vinho.streamlit.app
 
@@ -44,6 +57,25 @@ Busca Semântica: DuckDuckGo Search API
 
 Deploy/Infraestrutura: Git, GitHub e Streamlit Cloud
 
+Estrutura do projeto.
+
+Alquimia-do-Vinho/
+│
+├── app.py                 # 🖥️ Aplicação Principal (Interface Streamlit)
+├── train.py               # 🧠 Treina a IA e Gera os Gráficos
+├── requirements.txt       # 📦 Lista de bibliotecas necessárias
+├── winequality-red.csv    # 📊 Dataset (Base de dados original)
+├── README.md              # 📖 Documentação do Projeto
+│
+├── graficos/              # 📈 Gráficos gerados pelo treinamento
+│   ├── 1_boxplot.png
+│   ├── 2_heatmap.png
+│   └── 3_matriz_confusao.png
+│
+└── models/ (Opcional - ou na raiz)
+    ├── modelo_vinho.pkl   # O cérebro da IA (Salvo)
+    └── scaler.pkl         # O calibrador de dados (Salvo)
+
 4. JUSTIFICATIVA DE COMPLEXIDADE
 O projeto atende aos requisitos de complexidade compatível com 3 meses de trabalho, pois envolveu o ciclo completo de ciência de dados e engenharia de software:
 
@@ -55,3 +87,4 @@ Persistência de Objetos: Uso de joblib para salvar o modelo treinado (.pkl) e o
 
 
 Integração Web: Desenvolvimento de interface gráfica para tornar a IA acessível ao usuário final.
+
