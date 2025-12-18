@@ -4,9 +4,13 @@ Integrante: Leandro Silva da Luz Oliveira. Turma: 41. Unidade Santo Amaro Discip
 
 O Alquimia do Vinho é uma aplicação Full Stack que une a tradição da enologia com a precisão da Inteligência Artificial.
 
-Links de Acesso:
+Links de Acesso: https://www.youtube.com/watch?v=8s90Vh6YnnY
 
 Repositório (Código Fonte): https://github.com/leandroluz2017/alquimia-do-vinho
+
+Códigos do VScod para liberar o projeto: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+em seguida : .\venv\Scripts\Activate
+por ultimo: streamlit run app.py
 
 Vídeo de Apresentação
 
@@ -87,4 +91,3 @@ Persistência de Objetos: Uso de joblib para salvar o modelo treinado (.pkl) e o
 
 
 Integração Web: Desenvolvimento de interface gráfica para tornar a IA acessível ao usuário final.
-
